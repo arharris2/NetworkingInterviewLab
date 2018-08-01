@@ -1,0 +1,85 @@
+Objective 1:
+
+Fix:
+Switch2:
+Configure terminal
+Interface range g0/1-2
+No channel-group 1 mode desirable
+Channel-group 1 mode active
+
+Verification:
+
+Output of “show etherchannel 1 summary” should show port-channel 1 using LACP and both ports Gi0/1 and Gi0/2 should have a “(P)” beside them.
+
+Switch1 should successfully be able to ping 10.3.1.2
+
+Objective 2:
+
+Fix:
+Switch1:
+Config t
+Interface port-channel1
+Switchport trunk allowed vlan add 2
+
+Verification:
+Output of “show spanning-tree vlan 2” should include port-channel 1.
+
+Router3 should be able to successfully ping 10.2.2.2.
+
+Objective 3:
+
+Fix:
+Router4
+Interface g0/1.1
+Standby preempt
+Standby priority 150
+
+Verification:
+Output of “show standby” on Router4 should include “Preemption enabled”, “Active router is local”, and “Standby router is 10.2.2.3”
+
+
+
+
+Objective 4: 
+
+Fix:
+Router3:
+Config t
+Router ospf 1
+No passive-interface g0/0
+
+Verification:
+Output of “show ip ospf neighbor” on Router3 should include 10.1.3.1 as a neighbor.
+
+Objective 5:
+
+Fix:
+Router4
+Config t
+Interface g0/0
+Ip ospf network point-to-point
+
+Verification:
+Output of “show ip ospf neighbor” on Router4 should include 10.1.3.1 as a neighbor.
+
+Objective 6:
+
+Fix:
+Router1:
+Config t
+Router bgp 65001
+Neighbor 10.1.1.1 remote-as 65002
+Network 1.1.1.1 mask 255.255.255.255
+
+Router2:
+Config t
+Router bgp 65002
+Neighbor 10.1.1.2 remote-as 65001
+Redistribute ospf 1
+Router ospf 1
+Redistribute bgp 65002 subnets
+
+Verification:
+Ping 1.1.1.1 from either Router3 or Router4.
+
+

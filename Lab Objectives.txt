@@ -1,0 +1,13 @@
+There are a number of issues with this network configuration. No IP addresses should need to be changed.
+
+1.	There is a Port-Channel configured between Switch1 and Switch2 but is not functioning. Fix the issue using a standards-compliant protocol. To verify functionality, Switch1 should be able to ping the Vlan1 interface on Switch2.
+
+2.	Router3 and Router4 both have interface G0/1.1 configured for the same network and an HSRP IP address. However, they are not seeing each other as HSRP neighbors. Please resolve this issue. Router3 should be able to ping Router4 on it’s G0/1.1 interface.
+
+3.	Configure Router4 to be preferred as the HSRP active forwarder. Verify functionality with the “show standby” command.
+
+4.	Router3 is configured for OSPF but is not forming a neighborship with Router2. Router3 should not form an OSPF neighborship with Router4. Verify with “show ip ospf neighbors”
+
+5.	Router4 is not forming an OSPF neighborship with Router2. Fix this issue but do not change the OSPF configuration on Router2. Verify with “show ip ospf neighbors”.
+
+6.	Configure BGP between Router1 and Router2 and advertise Router1’s loopback0 interface to Router2. Redistribute routes learned from OSPF on Router2 to Router1. Router1 should have an autonomous system number of 65001 and Router2 should have an autonomous system number of 65002. Verify by pinging Router1’s loopback interface from either Router3 or Router4.

@@ -5,4 +5,4 @@ This was built in EVE-NG (http://eve-ng.com) for the purposes of testing the ski
 
 The topology was built using vIOS and vIOSL2 images.
 
-![Lab](arharris2.github.com/repository/img/lab.png)
+![Lab](lab.png)

@@ -1,6 +1,6 @@
 There are a number of issues with this network configuration. No IP addresses should need to be changed.
 
-1.	There is a Port-Channel configured between Switch1 and Switch2 but is not functioning. Fix the issue using a standards-compliant protocol. To verify functionality, Switch1 should be able to ping the Vlan1 interface on Switch2.
+1.	There is a Port-Channel configured between Switch1 and Switch2 that is not functioning. Fix the issue using a standards-compliant protocol. To verify functionality, Switch1 should be able to ping the Vlan1 interface on Switch2.
 
 2.	Router3 and Router4 both have interface G0/1.1 configured for the same network and an HSRP IP address. However, they are not seeing each other as HSRP neighbors. Please resolve this issue. Router3 should be able to ping Router4 on it’s G0/1.1 interface.
 
